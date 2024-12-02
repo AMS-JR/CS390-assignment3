@@ -1,5 +1,7 @@
 package recursion;
 
+import java.util.Arrays;
+
 public class Recursion {
     private Recursion() {
         throw new IllegalStateException("Utility class");
@@ -29,5 +31,29 @@ public class Recursion {
             arr[endIndex] = temp;
             return reverseArrayElements(arr, beginIndex + 1, endIndex - 1);
         }
+    }
+
+    /**
+     * Recursion to return the Max value from a given array
+     * @param arr
+     * @return int
+     */
+    public static int getMaxValue(int[] arr){
+        int maxValue = arr[0];
+        int remainingMaxValue = arr[0];
+        System.out.println(Arrays.toString(arr));
+        if(arr == null) return -1;
+        else if(arr.length < 1) return maxValue;
+        else {
+        if(arr.length == 1){
+            maxValue = arr[0]; //base case
+        }
+        else
+            remainingMaxValue = getMaxValue(Arrays.copyOfRange(arr, 1, arr.length));
+
+        if (remainingMaxValue > maxValue)
+            maxValue = remainingMaxValue;
+        }
+        return maxValue;
     }
 }

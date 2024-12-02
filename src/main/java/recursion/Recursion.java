@@ -39,20 +39,14 @@ public class Recursion {
      * @return int
      */
     public static int getMaxValue(int[] arr){
+        if(arr == null) return -1;
         int maxValue = arr[0];
         int remainingMaxValue = arr[0];
-        System.out.println(Arrays.toString(arr));
-        if(arr == null) return -1;
-        else if(arr.length < 1) return maxValue;
+        if(arr.length < 1) return maxValue;
         else {
-        if(arr.length == 1){
-            maxValue = arr[0]; //base case
-        }
-        else
-            remainingMaxValue = getMaxValue(Arrays.copyOfRange(arr, 1, arr.length));
-
-        if (remainingMaxValue > maxValue)
-            maxValue = remainingMaxValue;
+            if(arr.length == 1) maxValue = arr[0]; //base case
+            else remainingMaxValue = getMaxValue(Arrays.copyOfRange(arr, 1, arr.length));
+            if (remainingMaxValue > maxValue) maxValue = remainingMaxValue;
         }
         return maxValue;
     }

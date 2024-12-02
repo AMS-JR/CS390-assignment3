@@ -1,7 +1,12 @@
 package recursion;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello recursion!");
+        System.out.println("Recursion!");
+        //[1, 3, 5, 7, 9, 13]
+        System.out.println("Reversed Array Elements: " + Arrays.toString(Recursion.reverseArrayElements(new Object[]{1, 3, 5, 7, 9, 13})));
+
     }
 }

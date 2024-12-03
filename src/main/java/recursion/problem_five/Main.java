@@ -1,10 +1,14 @@
 package recursion.problem_five;
 
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         System.out.println("Max: " + getMaxValue(new int[]{ 5, -3, 6, 1, 9, 4 }));
+    }
+    public static int getMaxValue(int[] arr){
+        if (arr == null || arr.length == 0) {
+            throw new IllegalArgumentException("Array must not be null or empty");
+        }
+        return getMaxValue(arr, 0);
     }
     /**
      * Recursion to return the Max value from a given array
@@ -12,16 +16,12 @@ public class Main {
      * @param arr
      * @return int
      */
-    public static int getMaxValue(int[] arr){
-        if(arr == null) return -1;
-        int maxValue = arr[0];
-        int remainingMaxValue = arr[0];
-        if(arr.length < 1) return maxValue;
-        else {
-            if(arr.length == 1) maxValue = arr[0]; //base case
-            else remainingMaxValue = getMaxValue(Arrays.copyOfRange(arr, 1, arr.length));
-            if (remainingMaxValue > maxValue) maxValue = remainingMaxValue;
+    private static int getMaxValue(int[] arr, int index){
+        if (index == arr.length - 1) { // Base case: last element
+            return arr[index];
         }
-        return maxValue;
+
+        int maxOfRemaining = getMaxValue(arr, index + 1); // Recursive call
+        return Math.max(arr[index], maxOfRemaining);
     }
 }

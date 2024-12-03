@@ -1,4 +1,4 @@
-package recursion;
+package recursion.problem_one;
 
 public class Exponential {
     public static void main(String[] args) {

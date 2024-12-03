@@ -1,5 +1,6 @@
 package recursion;
 
+import java.security.cert.TrustAnchor;
 import java.util.Arrays;
 
 public class Recursion {
@@ -49,5 +50,36 @@ public class Recursion {
             if (remainingMaxValue > maxValue) maxValue = remainingMaxValue;
         }
         return maxValue;
+    }
+
+    public static char miniChar(String str){
+
+        if(str.length() == 1){
+            return str.charAt(0);
+        }
+
+        char currentChar = str.charAt(0);
+        char miniChar = miniChar(str.substring(1));
+
+        return (currentChar > miniChar)? miniChar : currentChar;
+    }
+
+    private static boolean isPalindrome(String str, int left, int right){
+        if (left >= right){
+            return true;
+        }
+
+        if(str.charAt(left) == str.charAt(right)){
+            return isPalindrome(str, left+1, right-1);
+        }
+        return false;
+    }
+
+    public static boolean checkPalindrome(int Num){
+        if (Num < 0){
+            return false;
+        }
+        String numStr = String.valueOf(Num);
+        return isPalindrome(numStr, 0, numStr.length()-1);
     }
 }
